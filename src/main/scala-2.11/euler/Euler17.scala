@@ -18,16 +18,16 @@ object Euler17 extends App {
     val numDigits = numStr.size
 
     if (numDigits == 4)
-      return currStr + "one thousand"
+      return currStr + "onethousand"
     else if (num > 10 && num < 20)
       return currStr + elevenToNineteen(numStr.tail.toInt - 1)
     else if (numDigits == 3)
     {
-      val and = if (numStr.tail != "00") " and " else ""
-      getNumString(numStr.tail.toInt, currStr + ones(numStr.head.asDigit - 1) + " hundred"+ and)
+      val and = if (numStr.tail != "00") "and" else ""
+      getNumString(numStr.tail.toInt, currStr + ones(numStr.head.asDigit - 1) + "hundred"+ and)
     }
     else if(numDigits == 2)
-      getNumString(numStr.tail.toInt, currStr + tens(numStr.head.asDigit - 1) + (if(numStr.tail != "0") "-" else ""))
+      getNumString(numStr.tail.toInt, currStr + tens(numStr.head.asDigit - 1))
     else if(numDigits == 1 && num != 0)
       return currStr + ones(numStr.head.asDigit - 1)
     else
@@ -35,5 +35,5 @@ object Euler17 extends App {
   }
 
   val numsAsStrings = (1 to 1000).map(getNumString(_))
-  println(numsAsStrings.mkString.filter(_.isLetter).size)
+  println(numsAsStrings.mkString.size)
 }
